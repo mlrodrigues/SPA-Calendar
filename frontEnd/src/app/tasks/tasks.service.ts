@@ -26,4 +26,8 @@ export class TasksService {
   findAll(): Observable<Tasks[]> {
     return this.httpClient.get<Tasks[]>(`${this.URL}/tasks`);
   }
+
+  findTask(name: string): Observable<Tasks[]> {
+    return this.httpClient.get<Tasks[]>(`${this.URL}/tasks/${name}`);
+  }
 }

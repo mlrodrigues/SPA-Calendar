@@ -28,9 +28,13 @@
 </div>
 
 <div class="card mt-3">
-	<div class="card-header">
+	<div class="card-header d-flex">
 		Lista de agendamento
-		<button style="float:right" (click)="findAll()" class="btn btn-sm btn-outline-info">Recarregar</button>
+		<button (click)="findAll()" class="btn btn-sm btn-outline-info">Recarregar</button>
+		<div class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="title">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="findTask(title)">Search</button>
+		</div>
 	</div>
 	<div class="card-body">
 		<table class="table">

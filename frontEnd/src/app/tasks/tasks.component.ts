@@ -22,6 +22,16 @@ export class TasksComponent implements OnInit {
   time: string = "";
   
   ngOnInit(): void { }
+
+  filtrar(palavraChave: string) {
+    if (palavraChave) {
+      palavraChave = palavraChave.toUpperCase();
+
+      this.tasks = this.tasks.filter(a =>
+            a.title.toUpperCase().indexOf(palavraChave) >= 0
+        );
+    }
+  }
   
   findAll(): void {
     this.service.findAll().subscribe((data) => {
@@ -31,7 +41,17 @@ export class TasksComponent implements OnInit {
       this.hour = "";
       this.date = "";
       this.time = "";
-      console.log(data);
+    });
+  }
+
+  findTask(title: string): void{
+    this.service.findTask(title).subscribe((data) => {
+      this.tasks = data;
+      this.id;
+      this.descrption = "";
+      this.hour = "";
+      this.date = "";
+      this.time = "";
     });
   }
   

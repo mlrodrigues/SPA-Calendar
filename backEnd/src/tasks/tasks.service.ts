@@ -27,6 +27,13 @@ export class TasksService {
     });
   }
 
+  findTask(name: string) {
+    return this.repository
+      .createQueryBuilder('task')
+      .where('task.title = :title', { title: name })
+      .getMany();
+  }
+
   async update(id: string, updateTaskDto: UpdateTaskDto): Promise<Task> {
     const task = await this.repository.preload({
       id: Number(id),
