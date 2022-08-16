@@ -1,0 +1,63 @@
+<div class="container">
+  <h1><i>Agendamento</i></h1>
+  <hr />
+	<div class="form-group">
+    <label for="exampleInputPassword1">Título:</label>
+		<input type="text" class="form-control" placeholder="Título" [(ngModel)]="task.title">
+  </div>
+
+	<div class="form-group">
+    <label for="exampleInputPassword1">Descrição:</label>
+		<input type="text" class="form-control" placeholder="Descrição" [(ngModel)]="task.descrption">
+  </div>
+
+  <div class="form-group d-flex">
+    <label for="exampleInputPassword1">Data:</label>
+		<input type="date" class="form-control" placeholder="Data" [(ngModel)]="task.date" datetime="yyyy-MM-dd">
+
+		<label for="exampleInputPassword1">Hora:</label>
+		<input type="time" class="form-control" placeholder="Hora" [(ngModel)]="task.hour" >
+
+		<label for="exampleInputPassword1">Tempo:</label>
+		<input type="time" class="form-control" placeholder="Hora" [(ngModel)]="task.time">
+  </div>
+
+	<div class="input-group-append">
+    <button class="btn btn-outline-success" (click)="task.id == undefined || task.id == 0 ? create() : update(task)" type="button">Salvar</button>
+  </div>
+</div>
+
+<div class="card mt-3">
+	<div class="card-header">
+		Lista de agendamento
+		<button style="float:right" (click)="findAll()" class="btn btn-sm btn-outline-info">Recarregar</button>
+	</div>
+	<div class="card-body">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Título</th>
+					<th scope="col">Descrição</th>
+					<th scope="col">Data e Hora</th>
+					<th scope="col">Tempo</th>
+					<th scope="col">Açoes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let task of tasks">
+					<th scope="row">{{task.id}}</th>
+					<td>{{task.title}}</td>
+					<td>{{task.descrption}}</td>
+					<td>{{task.date | date : 'dd/MM/yyyy'}} as {{task.hour}}</td>
+					<td>{{task.time}}</td>
+					<td>
+						<button (click)="done(task)" class="btn btn-sm btn-primary">Feito</button>
+						<button (click)="remove(task.id)" style="margin-left: 5px;" class="btn btn-sm btn-danger">Apagar</button>
+						<button (click)="prepareUpdate(task)" style="margin-left: 5px;" class="btn btn-sm btn-secondary">Editar</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -21,6 +21,9 @@ export class Task extends BaseEntity {
   @Column({ name: 'date', type: 'timestamp' })
   date: Timestamp;
 
+  @Column({ name: 'hour', type: 'time' })
+  hour: string;
+
   @Column({ name: 'time', type: 'time' })
   time: string;
 

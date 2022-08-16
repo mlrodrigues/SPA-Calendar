@@ -15,6 +15,9 @@ export class CreateTaskDto {
   date: Timestamp;
 
   @IsString()
+  hour: string;
+
+  @IsString()
   time: string;
 
   @IsDateString()
